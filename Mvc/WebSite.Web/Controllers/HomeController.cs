@@ -4,8 +4,7 @@
     using System.Web.Mvc;
     using Data.Repository;
     using Data.Repository.Interfaces;
-    using WebSite.Models;
-    using Models;
+    using System.Linq.Dynamic;
 
     public class HomeController : Controller
     {
@@ -13,28 +12,26 @@
 
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
-            return View();
-        }
-
-        public ActionResult News()
-        {
-            var result = db.ArticleRepo
+            var allArticles = db.ArticleRepo
                 .Get()
                 .Take(3)
                 .ToList();
 
-            return View(result);
+            return View(allArticles);
         }
+        
 
-        public ActionResult About()
+        /// <summary>
+        /// This comes from API
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Events()
         {
-
             return View();
         }
+        
 
-        public ActionResult TeamMembers()
+        public ActionResult About()
         {
             var result = db.TeamMemberRepo
                 .Get()
@@ -43,33 +40,8 @@
 
             return View(result);
         }
+        
 
-        [HttpGet]
-        public ActionResult Email()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Email(EmailViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var email = new Email()
-                {
-                    Company = model.Company,
-                    Message = model.Message,
-                    Name = model.Name,
-                    Phone = model.Phone,
-                    Subject = model.Subject,
-                    Url = model.Url
-                };
-
-                db.EmailRepo.Insert(email);
-                db.SaveChanges();
-            }
-
-            return View(model);
-        }
+        
     }
 }

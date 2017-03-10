@@ -6,7 +6,6 @@
 
     public class ArticleViewModel
     {
-
         [Required]
         [MinLength(ValidationConstants.MinLengthArticleTitle)]
         [MaxLength(ValidationConstants.MaxLengthArticleTitle)]

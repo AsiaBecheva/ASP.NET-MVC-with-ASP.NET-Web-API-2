@@ -1,7 +1,8 @@
 ﻿namespace WebSite.Web.Models
 {
     using System.ComponentModel.DataAnnotations;
-    using WebSite.Infrastructure.Constants;
+    using Infrastructure.Constants;
+    using System;
 
     public class EmailViewModel
     {
@@ -29,5 +30,10 @@
         [MinLength(ValidationConstants.MinLengthEmailMessage)]
         [MaxLength(ValidationConstants.MaxLengthEmailMessage)]
         public string Message { get; set; }
+
+        internal void SendMessage()
+        {
+            throw new EntryPointNotFoundException();
+        }
     }
 }
