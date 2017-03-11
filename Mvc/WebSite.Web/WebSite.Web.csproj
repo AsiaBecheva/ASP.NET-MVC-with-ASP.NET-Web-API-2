@@ -283,10 +283,10 @@
     <Content Include="Views\Contact\Email.cshtml" />
     <Content Include="Views\About\TeamMembers.cshtml" />
     <Content Include="Views\Administration\_AdministrationLayout.cshtml" />
+    <Content Include="Views\Home\_EventsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Administrator\" />
     <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>

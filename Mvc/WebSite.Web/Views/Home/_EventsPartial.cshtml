@@ -1,0 +1,16 @@
+﻿@model List<WebSite.Models.Event>
+
+<div>
+    @foreach (var ev in this.Model)
+    {
+        <h2>
+            @ev.Topic
+        </h2>
+        <div>
+            @ev.HeldOn
+        </div>
+        <p>
+            @ev.Description
+        </p>
+    }
+</div>

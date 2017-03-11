@@ -9,6 +9,7 @@
     using System.IO;
     using Newtonsoft.Json;
     using WebSite.Models;
+    using System.Collections.Generic;
 
     public class HomeController : Controller
     {
@@ -30,7 +31,7 @@
         /// Events that comes from API
         /// </summary>
         /// <returns></returns>
-        public string Events()
+        public ActionResult Events()
         {
             //Write your localhost after you run EventsApi!
             var request = WebRequest.Create("http://localhost:56964/api") as HttpWebRequest;
@@ -43,10 +44,9 @@
             string responseFromServer = reader.ReadToEnd();
             reader.Close();
 
-            var deserializeData = JsonConvert.DeserializeObject<Event>(responseFromServer);
+            var deserializeData = JsonConvert.DeserializeObject<List<Event>>(responseFromServer);
 
-            return deserializeData.ToString();
+            return View("_EventsPartial", deserializeData);
         }
-        
     }
 }

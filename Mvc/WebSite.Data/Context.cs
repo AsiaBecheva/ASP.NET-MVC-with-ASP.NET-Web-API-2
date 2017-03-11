@@ -17,6 +17,8 @@
         public virtual DbSet<Image> Image { get; set; }
         public virtual DbSet<Email> Email { get; set; }
         public virtual DbSet<TeamMember> TeamMember { get; set; }
+        public virtual DbSet<Event> Event { get; set; }
+
 
         public static Context Create()
         {
