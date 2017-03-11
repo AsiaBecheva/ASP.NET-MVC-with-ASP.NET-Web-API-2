@@ -58,10 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
-    <Compile Include="Migrations\201703101642166_asd.cs" />
-    <Compile Include="Migrations\201703101642166_asd.Designer.cs">
-      <DependentUpon>201703101642166_asd.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
@@ -82,11 +78,6 @@
       <Project>{07e9335c-63bf-4ed8-9956-5089fee13bd3}</Project>
       <Name>WebSite.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703101642166_asd.resx">
-      <DependentUpon>201703101642166_asd.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

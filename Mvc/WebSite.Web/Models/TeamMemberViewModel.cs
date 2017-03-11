@@ -1,7 +1,7 @@
 ﻿namespace WebSite.Web.Models
 {
     using System.ComponentModel.DataAnnotations;
-    using WebSite.Infrastructure.Constants;
+    using Infrastructure.Constants;
     using WebSite.Models;
 
     public class TeamMemberViewModel

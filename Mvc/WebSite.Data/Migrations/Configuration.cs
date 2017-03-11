@@ -45,9 +45,10 @@ namespace WebSite.Data.Migrations
                 }
             }
 
-            TeamMember[] teamMembers = new TeamMember[]
+            TeamMember[] teamMembers = new TeamMember[10];
+            for (int i = 0; i < teamMembers.Length; i++)
             {
-                new TeamMember()
+                 var member = new TeamMember()
                 {
                     EmployedOn = DateTime.UtcNow,
                     Name = "Pesho",
@@ -60,65 +61,10 @@ namespace WebSite.Data.Migrations
                         SystemFileName = "member.jpg",
                         Location = PathConstants.TeamImagePath
                     }
-                },
-                new TeamMember()
-                {
-                    EmployedOn = DateTime.UtcNow,
-                    Name = "Gosho",
-                    Position = "designer",
-                    Description = "Pesho is very smart!",
-                    Image = new Image
-                    {
-                        CreatedOn = DateTime.UtcNow,
-                        OriginalFileName = "member.jpg",
-                        SystemFileName = "member.jpg",
-                        Location = PathConstants.TeamImagePath
-                    }
-                },
-                new TeamMember()
-                {
-                    EmployedOn = DateTime.UtcNow,
-                    Name = "Georgi",
-                    Position = "QA",
-                    Description = "Pesho is very smart!",
-                    Image = new Image
-                    {
-                        CreatedOn = DateTime.UtcNow,
-                        OriginalFileName = "member.jpg",
-                        SystemFileName = "member.jpg",
-                        Location = PathConstants.TeamImagePath
-                    }
-                },
-                new TeamMember()
-                {
-                    EmployedOn = DateTime.UtcNow,
-                    Name = "Joro",
-                    Position = "designer",
-                    Description = "Pesho is very smart!",
-                    Image = new Image
-                    {
-                        CreatedOn = DateTime.UtcNow,
-                        OriginalFileName = "member.jpg",
-                        SystemFileName = "member.jpg",
-                        Location = PathConstants.TeamImagePath
-                    }
-                },
-                new TeamMember()
-                {
-                    EmployedOn = DateTime.UtcNow,
-                    Name = "Ivan",
-                    Position = "web developer",
-                    Description = "Pesho is very smart!",
-                    Image = new Image
-                    {
-                        CreatedOn = DateTime.UtcNow,
-                        OriginalFileName = "member.jpg",
-                        SystemFileName = "member.jpg",
-                        Location = PathConstants.TeamImagePath
-                    }
-                }
-            };
-        
+                };
+
+                teamMembers[i] = member;
+            }
             
 
 
@@ -192,7 +138,7 @@ namespace WebSite.Data.Migrations
                 };
 
             context.Articles.AddOrUpdate(articles);
-            context.TeamMember.AddOrUpdate(teamMembers.ToArray());
+            context.TeamMember.AddOrUpdate(teamMembers);
             context.SaveChanges();
         }
     }

@@ -1,20 +1,20 @@
 ﻿@model List<WebSite.Models.Article>
 
 
-<section class="wow bounceInRight container-fluid" id="articles">
+<section class="wow bounceInRight container" id="aboutUs">
     <header class="row">
-        <h1>Articles</h1>
+        <h1>About us</h1>
     </header>
     <article class="row">
         @{
             foreach (var article in this.Model)
             {
-                <article class="col-md-4 animated fadeInLeft ">
+                <article class="col-md-4">
                     <h3>@article.Title</h3>
                     <div>
                         @article.Content
                     </div>
-                    <img src="~/@(article.Image.Location + article.Image.OriginalFileName)" style="width:350px; height:180px"/>
+                    <img src="~/@(article.Image.Location + article.Image.OriginalFileName)" style="width:100%; height:220px;;"/>
                 </article>
             };
         }

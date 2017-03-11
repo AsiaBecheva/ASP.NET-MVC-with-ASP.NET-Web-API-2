@@ -30,18 +30,7 @@
             return View();
         }
         
-
-        public ActionResult About()
-        {
-            var result = db.TeamMemberRepo
-                .Get()
-                .OrderBy(x => x.EmployedOn)
-                .ToList();
-
-            return View(result);
-        }
         
-
         
     }
 }
