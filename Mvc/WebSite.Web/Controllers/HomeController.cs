@@ -5,6 +5,10 @@
     using Data.Repository;
     using Data.Repository.Interfaces;
     using System.Linq.Dynamic;
+    using System.Net;
+    using System.IO;
+    using Newtonsoft.Json;
+    using WebSite.Models;
 
     public class HomeController : Controller
     {
@@ -15,6 +19,7 @@
             var allArticles = db.ArticleRepo
                 .Get()
                 .Take(3)
+                .OrderBy(x => x.CreatedOn)
                 .ToList();
 
             return View(allArticles);
@@ -22,15 +27,26 @@
         
 
         /// <summary>
-        /// This comes from API
+        /// Events that comes from API
         /// </summary>
         /// <returns></returns>
-        public ActionResult Events()
+        public string Events()
         {
-            return View();
+            //Write your localhost after you run EventsApi!
+            var request = WebRequest.Create("http://localhost:56964/api") as HttpWebRequest;
+            request.Method = "Get";
+            request.ContentType = "application/json";
+            WebResponse responce = request.GetResponse();
+            Stream stream = responce.GetResponseStream();
+            StreamReader reader = new StreamReader(stream);
+
+            string responseFromServer = reader.ReadToEnd();
+            reader.Close();
+
+            var deserializeData = JsonConvert.DeserializeObject<Event>(responseFromServer);
+
+            return deserializeData.ToString();
         }
-        
-        
         
     }
 }
