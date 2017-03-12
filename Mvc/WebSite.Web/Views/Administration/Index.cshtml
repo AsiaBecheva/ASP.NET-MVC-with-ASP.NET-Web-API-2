@@ -2,15 +2,15 @@
 
 <ul class="list-group">
     <li class="list-group-item justify-content-between">
-        Articles
+        @Html.ActionLink("Articles", "GetArticles", "Administration")
         <span class="badge badge-default badge-pill">@Model.Articles.Count</span>
     </li>
     <li class="list-group-item justify-content-between">
-        Team Members
+        <a href="">Team Members</a>
         <span class="badge badge-default badge-pill">@Model.TeamMembers.Count</span>
     </li>
     <li class="list-group-item justify-content-between">
-        Pictures
+        <a href="#">Images</a>
         <span class="badge badge-default badge-pill">0</span>
     </li>
 </ul>

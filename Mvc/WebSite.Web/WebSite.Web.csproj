@@ -287,6 +287,8 @@
     <Content Include="Views\Administration\_AdministrationLayout.cshtml" />
     <Content Include="Views\Home\_EventsPartial.cshtml" />
     <Content Include="Views\Administration\Index.cshtml" />
+    <Content Include="Views\Administration\GetArticles.cshtml" />
+    <Content Include="Views\Administration\GetMembers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

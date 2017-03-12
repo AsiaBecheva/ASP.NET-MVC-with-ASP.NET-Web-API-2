@@ -1,0 +1,19 @@
+﻿@model List<WebSite.Models.Article>
+
+@{
+    Layout = "~/Views/Administration/_AdministrationLayout.cshtml";
+}
+
+<section class="container">
+    @foreach (var article in this.Model)
+    {
+
+        <ul class="list-group">
+            <li class="list-group-item justify-content-between">
+                <h2>
+                    <a href="#">@article.Title</a>
+                </h2>
+            </li>
+        </ul>
+    }
+</section>

@@ -31,9 +31,11 @@
         }
 
         [HttpGet]
-        public ActionResult AllArticles()
+        public ActionResult GetArticles()
         {
-            return View();
+            var articles = this.allItemsService.AllArticles();
+
+            return View(articles);
         }
 
         [HttpPost]
@@ -60,9 +62,11 @@
 
 
         [HttpGet]
-        public ActionResult AllMembers()
+        public ActionResult GetMembers()
         {
-            return View();
+            var members = this.allItemsService.AllMembers();
+
+            return View(members);
         }
 
         [HttpPost]
@@ -89,7 +93,7 @@
 
 
         [HttpGet]
-        public ActionResult AllImages()
+        public ActionResult GetImages()
         {
             return View();
         }
