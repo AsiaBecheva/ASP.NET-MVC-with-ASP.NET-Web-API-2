@@ -27,7 +27,7 @@
                     <li>@Html.ActionLink("Contact", "Email", "Contact")</li>
                     @if (Request.IsAuthenticated && User.IsInRole("Administrator"))
                     {
-                        <li>@Html.ActionLink("Administration", "Index", "Administration")</li>
+                        <li>@Html.ActionLink("Administration", "Index", "Administration/Index")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

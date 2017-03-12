@@ -1,0 +1,47 @@
+﻿@model WebSite.Models.Article
+
+@{
+    Layout = "~/Views/Administration/_AdministrationLayout.cshtml";
+}
+
+
+<section>
+@using (Html.BeginForm("AddArticle", "Administration", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group row">
+        <label class="col-md-2 text-right" for="Title">Title</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" name="Title">
+        </div>
+    </div>
+    <div>@Html.ValidationMessageFor(x => x.Title)</div>
+
+    <div class="form-group row">
+        <label class="col-md-2 text-right" for="Content">Content</label>
+        <div class="col-md-8">
+            <textarea rows="10" class="form-control" name="Content"></textarea>
+        </div>
+    </div>
+    <div>@Html.ValidationMessageFor(x => x.Content)</div>
+
+    <div class="form-group row">
+        <label class="col-md-2 text-right" for="file">Image</label>
+        <div class="col-md-8">
+            <input type="file" name="file">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <input type="submit" class="btn btn-danger" value="Save article" style="margin-left:290px;" />
+    </div>
+
+    if (TempData["Created!"] != null)
+    {
+        <h2 class="alert alert-success" style="text-align:center;">
+            @TempData["Created!"]
+        </h2>
+    }
+}
+</section>
+
+

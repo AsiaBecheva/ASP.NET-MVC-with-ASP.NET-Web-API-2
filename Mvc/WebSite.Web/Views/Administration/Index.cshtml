@@ -6,7 +6,7 @@
         <span class="badge badge-default badge-pill">@Model.Articles.Count</span>
     </li>
     <li class="list-group-item justify-content-between">
-        <a href="">Team Members</a>
+        @Html.ActionLink("Team Members", "GetMembers", "Administration")
         <span class="badge badge-default badge-pill">@Model.TeamMembers.Count</span>
     </li>
     <li class="list-group-item justify-content-between">

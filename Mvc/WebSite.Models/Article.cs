@@ -2,6 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
     using Infrastructure.Constants;
+    using System.Web;
 
     public class Article : Base
     {
@@ -17,6 +18,7 @@
         [MaxLength(ValidationConstants.MaxLengthArticleContent)]
         public string Content { get; set; } 
         
-        public virtual Image Image { get; set; } 
+        public virtual Image Image { get; set; }
+        
     }
 }

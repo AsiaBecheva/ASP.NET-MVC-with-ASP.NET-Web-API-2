@@ -8,6 +8,10 @@
     using Data.Repository.Interfaces;
     using Data.Repository;
     using Services;
+    using System;
+    using System.Web;
+    using Infrastructure.Constants;
+    using System.IO;
 
     [Authorize(Roles = "Administrator")]
     public class AdministrationController : Controller
@@ -30,6 +34,7 @@
             return View(administrationItems);
         }
 
+
         [HttpGet]
         public ActionResult GetArticles()
         {
@@ -38,22 +43,59 @@
             return View(articles);
         }
 
-        [HttpPost]
-        public ActionResult AddArticles(List<Article> model)
-        {
 
+        [HttpGet]
+        public ActionResult AddArticle()
+        {
             return View();
         }
 
+        [HttpPost]
+        public ActionResult AddArticle(Article model, HttpPostedFileBase file)
+        {
+            if (ModelState.IsValid && file != null)
+            {
+                var path = Server.MapPath(PathConstants.ArticlesImagePath);
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                file.SaveAs(path + Path.GetFileName(file.FileName));
+
+                var newImg = new Image()
+                {
+                    OriginalFileName = file.FileName,
+                    Location = path
+                };
+                
+                var article = new Article()
+                {
+                    Title = model.Title,
+                    Content = model.Content,
+                    CreatedOn = DateTime.UtcNow,
+                    Image = newImg
+                };
+
+                db.ArticleRepo.Insert(article);
+                //db.SaveChanges();                  //TODO : Problem with Save changes!
+
+                TempData["Created!"] = "Article was created!";
+                return RedirectToAction("AddArticle");
+            };
+
+            return View(model);
+        }
+
         [HttpPut]
-        public ActionResult EditArticles(List<Article> model)
+        public ActionResult EditArticle(Article model)
         {
 
             return View();
         }
 
         [HttpDelete]
-        public ActionResult DeleteArticles(List<Article> model)
+        public ActionResult DeleteArticle(Article model)
         {
 
             return View();
@@ -70,21 +112,21 @@
         }
 
         [HttpPost]
-        public ActionResult AddMembers(List<TeamMember> model)
+        public ActionResult AddMember(TeamMember model)
         {
 
             return View();
         }
 
         [HttpPut]
-        public ActionResult EditMembers(TeamMember model)
+        public ActionResult EditMember(TeamMember model)
         {
 
             return View();
         }
         
         [HttpDelete]
-        public ActionResult DeleteMembers(TeamMember model)
+        public ActionResult DeleteMember(TeamMember model)
         {
 
             return View();
@@ -99,14 +141,14 @@
         }
 
         [HttpPost]
-        public ActionResult AddImages(Image model)
+        public ActionResult AddImage(Image model)
         {
 
             return View();
         }
 
         [HttpDelete]
-        public ActionResult DeleteImages(Image model)
+        public ActionResult DeleteImage(Image model)
         {
 
             return View();
