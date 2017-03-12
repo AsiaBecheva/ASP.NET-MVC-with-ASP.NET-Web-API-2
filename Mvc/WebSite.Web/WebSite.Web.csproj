@@ -290,6 +290,7 @@
     <Content Include="Views\Administration\GetArticles.cshtml" />
     <Content Include="Views\Administration\GetMembers.cshtml" />
     <Content Include="Views\Administration\AddArticle.cshtml" />
+    <Content Include="Views\Administration\Images.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

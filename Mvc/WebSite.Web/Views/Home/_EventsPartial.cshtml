@@ -7,7 +7,7 @@
     <article class="row" style="overflow-y: scroll;height:300px;">
         @foreach (var ev in this.Model)
         {
-            <div class="col-md-3" style="display:inline;border:1px solid grey;">
+            <section class="col-md-3" style="display:inline;border:1px solid grey;">
                 <h2>
                     <a href="#">@ev.Topic</a>
                 </h2>
@@ -17,7 +17,7 @@
                 <p>
                     @ev.Description
                 </p>
-            </div>
+            </section>
         }
     </article>
 </section>

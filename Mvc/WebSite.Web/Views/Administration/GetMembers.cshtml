@@ -1,4 +1,41 @@
-﻿@{
+﻿@model List<WebSite.Models.TeamMember>
+
+@{
     Layout = "~/Views/Administration/_AdministrationLayout.cshtml";
 }
+
+<section class="container-fluid" id="articles">
+    
+        @{
+
+            foreach (var member in this.Model)
+            {
+                <article class="row">
+                    <div class="col-md-3">
+                        <img src="~/@(member.Image.Location + member.Image.OriginalFileName)" style="width:200px; height:200px;" />
+                    </div>
+                    <div class="col-md-3">
+                        <h3 style="font-weight:800">@member.Name</h3>
+                        <h3>@member.Position</h3>
+                        <p>@member.Description</p>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-danger">Action</button>
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Action</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Edit</a></li>
+                                <li><a href="#">Delete</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            };
+        }
+
+</section>
+
 
