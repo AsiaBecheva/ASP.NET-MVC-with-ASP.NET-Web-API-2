@@ -25,6 +25,10 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "TeamMembers", "About")</li>
                     <li>@Html.ActionLink("Contact", "Email", "Contact")</li>
+                    @if (Request.IsAuthenticated && User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Administration", "Index", "Administration")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -35,7 +39,7 @@
         <hr />
         <footer>
             <div class="container">
-                <div class="row">
+                <div class="row" id="footerr">
                     <div class="col-md-4 col-sm-6 footerleft ">
                         <div class="logofooter"> Logo</div>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>

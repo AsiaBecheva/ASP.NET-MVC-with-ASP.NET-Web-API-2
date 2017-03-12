@@ -1,29 +1,22 @@
 ﻿namespace WebSite.Web.Controllers
 {
-    using System.Linq;
     using System.Web.Mvc;
-    using Data.Repository;
-    using Data.Repository.Interfaces;
-    using System.Linq.Dynamic;
     using System.Net;
     using System.IO;
     using Newtonsoft.Json;
     using WebSite.Models;
     using System.Collections.Generic;
+    using Services;
 
     public class HomeController : Controller
     {
-        IUnitOfWork db = new UnitOfWork();
+        private AllItemsService allItemsService = new AllItemsService();
 
         public ActionResult Index()
         {
-            var allArticles = db.ArticleRepo
-                .Get()
-                .Take(3)
-                .OrderBy(x => x.CreatedOn)
-                .ToList();
+            var Articles = this.allItemsService.AllArticles();
 
-            return View(allArticles);
+            return View(Articles);
         }
         
 

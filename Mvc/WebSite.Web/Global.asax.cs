@@ -1,5 +1,8 @@
 ﻿namespace WebSite.Web
 {
+    using Data;
+    using Data.Migrations;
+    using System.Data.Entity;
     using System.Reflection;
     using System.Web.Mvc;
     using System.Web.Optimization;
@@ -9,6 +12,8 @@
     {
         protected void Application_Start()
         {
+
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<Context, Configuration>());
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
             AreaRegistration.RegisterAllAreas();

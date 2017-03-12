@@ -1,7 +1,6 @@
 ﻿namespace WebSite.Data
 {
     using Microsoft.AspNet.Identity.EntityFramework;
-    using Migrations;
     using System.Data.Entity;
     using Models;
 
@@ -10,7 +9,6 @@
         public Context()
             : base("WebSite", throwIfV1Schema: false)
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<Context, Configuration>());
         }
 
         public virtual DbSet<Article> Articles { get; set; }

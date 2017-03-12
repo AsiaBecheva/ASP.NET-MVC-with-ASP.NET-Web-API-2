@@ -1,16 +1,23 @@
 ﻿@model List<WebSite.Models.Event>
 
-<div>
-    @foreach (var ev in this.Model)
-    {
-        <h2>
-            @ev.Topic
-        </h2>
-        <div>
-            @ev.HeldOn
-        </div>
-        <p>
-            @ev.Description
-        </p>
-    }
-</div>
+<section id="events">
+    <header class="row">
+        <h1>Events</h1>
+    </header>
+    <article class="row" style="overflow-y: scroll;height:300px;">
+        @foreach (var ev in this.Model)
+        {
+            <div class="col-md-3" style="display:inline;border:1px solid grey;">
+                <h2>
+                    <a href="#">@ev.Topic</a>
+                </h2>
+                <div style="color:cadetblue;">
+                    @ev.HeldOn
+                </div>
+                <p>
+                    @ev.Description
+                </p>
+            </div>
+        }
+    </article>
+</section>

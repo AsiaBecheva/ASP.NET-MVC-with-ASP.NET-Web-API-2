@@ -1,26 +1,25 @@
 ﻿@model List<WebSite.Models.Article>
 
-
 <section class="wow bounceInRight container" id="article">
     <header class="row">
-        <h1>About us</h1>
+        <h1>News</h1>
     </header>
     <article class="row">
         @{
             foreach (var article in this.Model)
             {
-                <article class="col-md-4">
+                <div class="col-md-4">
                     <h3>@article.Title</h3>
                     <div>
                         @article.Content
                     </div>
                     <img src="~/@(article.Image.Location + article.Image.OriginalFileName)" style="width:100%; height:220px;;"/>
-                </article>
+                </div>
             };
         }
     </article>
 </section>
 
+@Html.Action("Events", "Home")
 
-@*@Html.Partial("_EventsPartial", List<WebSite.Models.Event>)*@
 

@@ -1,22 +1,17 @@
 ﻿namespace WebSite.Web.Controllers
 {
-    using System.Linq;
     using System.Web.Mvc;
-    using Data.Repository;
-    using Data.Repository.Interfaces;
+    using Services;
 
     public class AboutController : Controller
     {
-        IUnitOfWork db = new UnitOfWork();
+        readonly AllItemsService allItemsService = new AllItemsService();
         
         public ActionResult TeamMembers()
         {
-            var result = db.TeamMemberRepo
-                .Get()
-                .OrderBy(x => x.EmployedOn)
-                .ToList();
+            var members = this.allItemsService.AllMembers();
 
-            return View(result);
+            return View(members);
         }
     }
 }

@@ -9,7 +9,6 @@
         public Context()
             : base("Events")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<Context, Configuration>());
         }
 
         public virtual DbSet<Event> Events { get; set; }

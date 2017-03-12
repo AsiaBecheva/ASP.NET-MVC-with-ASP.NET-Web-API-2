@@ -45,100 +45,105 @@ namespace WebSite.Data.Migrations
                 }
             }
 
-            TeamMember[] teamMembers = new TeamMember[10];
-            for (int i = 0; i < teamMembers.Length; i++)
+            if (!context.TeamMember.Any())
             {
-                 var member = new TeamMember()
+                TeamMember[] teamMembers = new TeamMember[10];
+                for (int i = 0; i < teamMembers.Length; i++)
                 {
-                    EmployedOn = DateTime.UtcNow,
-                    Name = "Pesho",
-                    Position = "web developer",
-                    Description = "Pesho is very smart!",
-                    Image = new Image
+                    var member = new TeamMember()
                     {
+                        EmployedOn = DateTime.UtcNow,
+                        Name = "Pesho",
+                        Position = "web developer",
+                        Description = "Pesho is very smart!",
+                        Image = new Image
+                        {
+                            CreatedOn = DateTime.UtcNow,
+                            OriginalFileName = "member.jpg",
+                            SystemFileName = "member.jpg",
+                            Location = PathConstants.TeamImagePath
+                        }
+                    };
+
+                    teamMembers[i] = member;
+                }
+                context.TeamMember.AddOrUpdate(teamMembers);
+            }
+
+            if (!context.Articles.Any())
+            {
+                Article[] articles = new Article[]
+                {
+                    new Article()
+                    {
+                        Image = new Image()
+                        {
+                           CreatedOn = DateTime.UtcNow,
+                           OriginalFileName = "programming1.jpg",
+                           SystemFileName = "programming1.jpg",
+                           Location = PathConstants.ArticlesImagePath
+                        },
                         CreatedOn = DateTime.UtcNow,
-                        OriginalFileName = "member.jpg",
-                        SystemFileName = "member.jpg",
-                        Location = PathConstants.TeamImagePath
+                        Title = "Basic goals of computer programming",
+                        Content = "When you are planning to create a computer program you should: Ensure your program fulfills the need it is addressing. Ensure that people can easily use your program. Ensure that it is easy to understand, fix, and improve your program without a major time investment."
+                    },
+                    new Article()
+                    {
+                        Image = new Image()
+                        {
+                           CreatedOn = DateTime.UtcNow,
+                           OriginalFileName = "programming2.png",
+                           SystemFileName = "programming2.png",
+                           Location = PathConstants.ArticlesImagePath
+                        },
+                        CreatedOn = DateTime.UtcNow,
+                        Title = "Basic goals of computer programming",
+                        Content = "When you are planning to create a computer program you should: Ensure your program fulfills the need it is addressing. Ensure that people can easily use your program. Ensure that it is easy to understand, fix, and improve your program without a major time investment."
+                    },
+                    new Article()
+                    {
+                        Image = new Image()
+                        {
+                           CreatedOn = DateTime.UtcNow,
+                           OriginalFileName = "programming.jpg",
+                           SystemFileName = "programming.jpg",
+                           Location = PathConstants.ArticlesImagePath
+                        },
+                        CreatedOn = DateTime.UtcNow,
+                        Title = "Basic goals of computer programming",
+                        Content = "When you are planning to create a computer program you should: Ensure your program fulfills the need it is addressing. Ensure that people can easily use your program. Ensure that it is easy to understand, fix, and improve your program without a major time investment."
+                    },
+                    new Article()
+                    {
+                        Image = new Image()
+                        {
+                           CreatedOn = DateTime.UtcNow,
+                           OriginalFileName = "programming2.png",
+                           SystemFileName = "programming2.png",
+                           Location = PathConstants.ArticlesImagePath
+                        },
+                        CreatedOn = DateTime.UtcNow,
+                        Title = "Basic goals of computer programming",
+                        Content = "When you are planning to create a computer program you should: Ensure your program fulfills the need it is addressing. Ensure that people can easily use your program. Ensure that it is easy to understand, fix, and improve your program without a major time investment."
+                    },
+                    new Article()
+                    {
+                        Image = new Image()
+                        {
+                           CreatedOn = DateTime.UtcNow,
+                           OriginalFileName = "programming.jpg",
+                           SystemFileName = "programming.jpg",
+                           Location = PathConstants.ArticlesImagePath
+                        },
+                        CreatedOn = DateTime.UtcNow,
+                        Title = "Basic goals of computer programming",
+                        Content = "When you are planning to create a computer program you should: Ensure your program fulfills the need it is addressing. Ensure that people can easily use your program. Ensure that it is easy to understand, fix, and improve your program without a major time investment."
                     }
                 };
 
-                teamMembers[i] = member;
+                context.Articles.AddOrUpdate(articles);
             }
-            
 
-
-            Article[] articles = new Article[]
-                {
-                new Article()
-                {
-                    Image = new Image()
-                    {
-                       CreatedOn = DateTime.UtcNow,
-                       OriginalFileName = "programming1.jpg",
-                       SystemFileName = "programming1.jpg",
-                       Location = PathConstants.ArticlesImagePath
-                    },
-                    CreatedOn = DateTime.UtcNow,
-                    Title = "Basic goals of computer programming",
-                    Content = "When you are planning to create a computer program you should: Ensure your program fulfills the need it is addressing. Ensure that people can easily use your program. Ensure that it is easy to understand, fix, and improve your program without a major time investment."
-                },
-                new Article()
-                {
-                    Image = new Image()
-                    {
-                       CreatedOn = DateTime.UtcNow,
-                       OriginalFileName = "programming2.png",
-                       SystemFileName = "programming2.png",
-                       Location = PathConstants.ArticlesImagePath
-                    },
-                    CreatedOn = DateTime.UtcNow,
-                    Title = "Basic goals of computer programming",
-                    Content = "When you are planning to create a computer program you should: Ensure your program fulfills the need it is addressing. Ensure that people can easily use your program. Ensure that it is easy to understand, fix, and improve your program without a major time investment."
-                },
-                new Article()
-                {
-                    Image = new Image()
-                    {
-                       CreatedOn = DateTime.UtcNow,
-                       OriginalFileName = "programming.jpg",
-                       SystemFileName = "programming.jpg",
-                       Location = PathConstants.ArticlesImagePath
-                    },
-                    CreatedOn = DateTime.UtcNow,
-                    Title = "Basic goals of computer programming",
-                    Content = "When you are planning to create a computer program you should: Ensure your program fulfills the need it is addressing. Ensure that people can easily use your program. Ensure that it is easy to understand, fix, and improve your program without a major time investment."
-                },
-                new Article()
-                {
-                    Image = new Image()
-                    {
-                       CreatedOn = DateTime.UtcNow,
-                       OriginalFileName = "programming2.png",
-                       SystemFileName = "programming2.png",
-                       Location = PathConstants.ArticlesImagePath
-                    },
-                    CreatedOn = DateTime.UtcNow,
-                    Title = "Basic goals of computer programming",
-                    Content = "When you are planning to create a computer program you should: Ensure your program fulfills the need it is addressing. Ensure that people can easily use your program. Ensure that it is easy to understand, fix, and improve your program without a major time investment."
-                },
-                new Article()
-                {
-                    Image = new Image()
-                    {
-                       CreatedOn = DateTime.UtcNow,
-                       OriginalFileName = "programming.jpg",
-                       SystemFileName = "programming.jpg",
-                       Location = PathConstants.ArticlesImagePath
-                    },
-                    CreatedOn = DateTime.UtcNow,
-                    Title = "Basic goals of computer programming",
-                    Content = "When you are planning to create a computer program you should: Ensure your program fulfills the need it is addressing. Ensure that people can easily use your program. Ensure that it is easy to understand, fix, and improve your program without a major time investment."
-                }
-                };
-
-            context.Articles.AddOrUpdate(articles);
-            context.TeamMember.AddOrUpdate(teamMembers);
             context.SaveChanges();
         }
     }
